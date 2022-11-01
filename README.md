@@ -22,8 +22,12 @@
   - Use the Mantine Pagination component to let the users navigate a long list of items
 - Hide completed items in the list (the ability to show will be added in a later lab)
 
-#### Pagination Notes:
+#### Pagination Notes
 
 - Only display the first n items in the list, where n is the number to display per screen in your settings context.
 - If you have more than n items in the list, the Pagination Component will add a button that, when clicked, will replace the list with the next n items in the list.
 - the Pagination Component will also manage the previous (<) and next(>) arrow buttons upon correct implementation.
+
+References:
+
+- [Mantine Pagination Docs](https://mantine.dev/core/pagination/)
