@@ -4,7 +4,6 @@ import { SettingsContext } from '../../Context/Settings';
 import useFormHook from '../../hooks/form.js';
 // import { TextInput, Button, Group, Slider, Text } from '@mantine/core';
 
-
 const AddForm = ({ children }) => {
   const { defaultValues, addItem } = useContext(SettingsContext);
   const { handleChange, handleSubmit } = useFormHook(addItem, defaultValues);

@@ -4,11 +4,28 @@ import { v4 as uuid } from 'uuid';
 export const SettingsContext = React.createContext();
 
 const SettingsProvider = ({children}) => {
+  const [showCompleted, setShowCompleted] = useState(false);
+  const [pageItems, setPageItems] = useState(3);
+  const [sort, setSort] = useState('difficulty');
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
   const [defaultValues] = useState({
     difficulty: 4,
   });  
+
+  const values ={
+    list, 
+    setList, 
+    incomplete, 
+    setIncomplete, 
+    toggleComplete, 
+    addItem, 
+    defaultValues, 
+    deleteItem,
+    showCompleted, setShowCompleted,
+    pageItems, setPageItems,
+    sort, setSort,
+  }
 
   function addItem(item) {
     item.id = uuid();
@@ -47,7 +64,7 @@ const SettingsProvider = ({children}) => {
 
   return (
 
-    <SettingsContext.Provider value={{list, setList, incomplete, setIncomplete, toggleComplete, addItem, defaultValues, deleteItem, }}>
+    <SettingsContext.Provider value={values}>
       {children}
     </SettingsContext.Provider>
 
