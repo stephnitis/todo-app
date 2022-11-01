@@ -8,7 +8,7 @@ const SettingsProvider = ({children}) => {
   const [incomplete, setIncomplete] = useState([]);
   const [defaultValues] = useState({
     difficulty: 4,
-  });
+  });  
 
   function addItem(item) {
     item.id = uuid();

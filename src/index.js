@@ -12,6 +12,5 @@ root.render(
         <App />
       </SettingsProvider>
     </MantineProvider>
-
   </React.StrictMode>
 );
