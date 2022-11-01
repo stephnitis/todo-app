@@ -1,11 +1,58 @@
+import React from 'react';
+import { useContext } from 'react';
+import { SettingsContext } from '../../Context/Settings';
+import useFormHook from '../../hooks/form.js';
+import { Card, Text, Button, Switch, NumberInput } from '@mantine/core';
+// import { TextInput, Button, Group, Slider, Text } from '@mantine/core';
+
+const SettingsForm = ({ children }) => {
+  const { defaultValues, addItem } = useContext(SettingsContext);
+  const { handleChange, handleSubmit } = useFormHook(addItem, defaultValues);
+
+  return (
+    <>
+
+      <Card shadow="sm" p="lg" radius="md" >
+        <form onSubmit={handleSubmit}>
+
+          {/* // How many To Do Items to show at once
+
+          // Whether or not to show completed items
+
+          // Provide the users with a form where they can change the values for those settings */}
+
+          <Card.Section withBorder inheritPadding py="xs">
+            <Text weight={800}>Update Settings</Text>
+          </Card.Section>
+
+          <Switch
+            label="Show Completed ToDos"
+          />
+
+          <Text weight={500} inheritPadding py="md">Items Per Page</Text>
+          <NumberInput
+            defaultValue={2}
+            placeholder="Items Per Page"
+            label="Items Per Page"
+          />
+
+          <Text weight={500} inheritPadding py="md">Sort Keyword</Text>
+          <input onChange={handleChange} name="assignee" type="text" placeholder="difficulty" />
+
+          <Button type="submit" variant="light" color="blue" fullWidth mt="md" radius="md">Add Item</Button>
+
+
+        </form>
+      </Card>
 
 
 
-// How many To Do Items to show at once
+    </>
+  )
+}
 
-// Whether or not to show completed items
+export default SettingsForm
 
-// Provide the users with a form where they can change the values for those settings
 
 // Once settings are updated, render the updated settings to the right of the “form”. Consider using Grid, Card, and When components.
 
