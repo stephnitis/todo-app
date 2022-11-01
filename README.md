@@ -2,6 +2,10 @@
 
 ## Author: Stephanie Hill
 
+Links:
+
+- [Code Sandbox](https://codesandbox.io/p/github/stephnitis/todo-app/draft/goofy-dream?file=%2FREADME.md&workspace=%257B%2522activeFileId%2522%253A%2522cl9ye3gxl000xlri0798d1bsr%2522%252C%2522openFiles%2522%253A%255B%2522%252FREADME.md%2522%255D%252C%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522gitSidebarPanel%2522%253A%2522COMMIT%2522%252C%2522sidekickItems%2522%253A%255B%257B%2522key%2522%253A%2522cl9ye3inp000o3b6hkydwhpnz%2522%252C%2522type%2522%253A%2522PROJECT_SETUP%2522%252C%2522isMinimized%2522%253Afalse%257D%252C%257B%2522type%2522%253A%2522TASK_LOG%2522%252C%2522taskId%2522%253A%2522start%2522%252C%2522key%2522%253A%2522cl9ye3wzn004n3b6h1qh6pdwz%2522%252C%2522isMinimized%2522%253Afalse%257D%255D%257D)
+
 ## Phase One
 
 ### branch: context-settings
@@ -28,9 +32,9 @@
 - If you have more than n items in the list, the Pagination Component will add a button that, when clicked, will replace the list with the next n items in the list.
 - the Pagination Component also manages the previous (<) and next(>) arrow buttons.
 
-Links:
+## Phase Two
 
-- [Code Sandbox](https://codesandbox.io/p/github/stephnitis/todo-app/draft/goofy-dream?file=%2FREADME.md&workspace=%257B%2522activeFileId%2522%253A%2522cl9ye3gxl000xlri0798d1bsr%2522%252C%2522openFiles%2522%253A%255B%2522%252FREADME.md%2522%255D%252C%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522gitSidebarPanel%2522%253A%2522COMMIT%2522%252C%2522sidekickItems%2522%253A%255B%257B%2522key%2522%253A%2522cl9ye3inp000o3b6hkydwhpnz%2522%252C%2522type%2522%253A%2522PROJECT_SETUP%2522%252C%2522isMinimized%2522%253Afalse%257D%252C%257B%2522type%2522%253A%2522TASK_LOG%2522%252C%2522taskId%2522%253A%2522start%2522%252C%2522key%2522%253A%2522cl9ye3wzn004n3b6h1qh6pdwz%2522%252C%2522isMinimized%2522%253Afalse%257D%255D%257D)
+### branch: context-methods
 
 References:
 
