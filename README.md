@@ -36,6 +36,8 @@ Links:
 
 ### branch: context-methods
 
+![UML for lab32](./assets/Lab32.png)
+
 References:
 
 - [Demo Code](https://github.com/codefellows/seattle-code-javascript-401d48)
