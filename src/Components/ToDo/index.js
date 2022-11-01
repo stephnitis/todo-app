@@ -16,10 +16,10 @@ const ToDo = () => {
         </header>
 
       <Grid justify="center">
-        <Grid.Col span={2} gutter="xl">
+        <Grid.Col lg={2} sm={1} gutter="xl">
           <AddForm />
         </Grid.Col>
-        <Grid.Col span={2} gutter="xl">
+        <Grid.Col lg={2} sm={1} gutter="xl">
           <List />
         </Grid.Col>
       </Grid>
