@@ -1,7 +1,6 @@
 
 import { Grid } from '@mantine/core';
 import AddForm from '../AddForm/AddForm.jsx';
-import AppHeader from '../Header/Header.jsx';
 import List from '../List/List'
 import './todo.scss'
 
