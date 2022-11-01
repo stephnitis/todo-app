@@ -2,21 +2,19 @@ import React from 'react';
 import { useContext } from 'react';
 import { SettingsContext } from '../../Context/Settings';
 import useFormHook from '../../hooks/form.js';
-import { TextInput, Button, Group, Slider, Text } from '@mantine/core';
+// import { TextInput, Button, Group, Slider, Text } from '@mantine/core';
 
 
 const AddForm = ({ children }) => {
   const { defaultValues, addItem } = useContext(SettingsContext);
   const { handleChange, handleSubmit } = useFormHook(addItem, defaultValues);
 
-
-
   return (
     <>
 
-      <form onSubmit={handleSubmit} style={{ maxWidth: 320, margin: 'auto' }}>
-        <TextInput label="To Do Item" placeholder="Item Details" onChange={handleChange} />
-        <TextInput mt="md" label="Assigned To" placeholder="Assignee" onChange={handleChange} />
+      {/* <form onSubmit={handleSubmit} style={{ maxWidth: 320, margin: 'auto' }}>
+        <TextInput label="To Do Item" placeholder="Item Details" onChange={handleChange}/>
+        <TextInput mt="md" label="Assigned To" placeholder="Assignee" onChange={handleChange}/>
         <Text mt="md" size="sm">
           Difficulty
         </Text>
@@ -27,9 +25,9 @@ const AddForm = ({ children }) => {
             Add Item
           </Button>
         </Group>
-      </form>
+      </form> */}
 
-      {/* <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
 
         <h2>Add To Do Item</h2>
 
@@ -51,7 +49,7 @@ const AddForm = ({ children }) => {
         <label>
           <button type="submit">Add Item</button>
         </label>
-      </form> */}
+      </form>
 
 
 
