@@ -3,6 +3,7 @@ import React from 'react';
 import { createStyles, Navbar, Text, Header  } from '@mantine/core';
 import { useContext } from 'react';
 import { SettingsContext } from '../../Context/Settings';
+import { Link } from "react-router-dom";
 
 
 const useStyles = createStyles((theme) => ({
@@ -32,7 +33,8 @@ const AppHeader = ({ children }) => {
       <>
        <Header>        
       <Navbar className={classes.navbar}>
-          <Text>Home</Text>
+          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/settings" className="nav-link">Settings</Link>
       </Navbar>
       </Header>
       <Header data-testid="todo-h1" className={classes.todoHeader}>
