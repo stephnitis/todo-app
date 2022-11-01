@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { SettingsContext } from '../../Context/Settings';
 import useFormHook from '../../hooks/form.js';
+import { Card, Text, Badge, Button, Group, Menu, ActionIcon } from '@mantine/core';
 // import { TextInput, Button, Group, Slider, Text } from '@mantine/core';
 
 const AddForm = ({ children }) => {
@@ -26,29 +27,34 @@ const AddForm = ({ children }) => {
         </Group>
       </form> */}
 
-      <form onSubmit={handleSubmit}>
+      <Card shadow="sm" p="lg" radius="md" withBorder>
+        <form onSubmit={handleSubmit}>
+          <Card.Section withBorder inheritPadding py="xs">
 
-        <h2>Add To Do Item</h2>
+            <Text>Add To Do Item</Text>
+          </Card.Section>
 
-        <label>
-          <span>To Do Item</span>
-          <input onChange={handleChange} name="text" type="text" placeholder="Item Details" />
-        </label>
+          <Card.Section withBorder inheritPadding py="xs">
+            <Text weight={300}>To Do Item</Text>
+            <input onChange={handleChange} name="text" type="text" placeholder="Item Details" />
+          </Card.Section>
 
-        <label>
-          <span>Assigned To</span>
-          <input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
-        </label>
+          <Card.Section withBorder inheritPadding py="xs">
+            <Text weight={300}>Assigned To</Text>
+            <input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
+          </Card.Section>
 
-        <label>
-          <span>Difficulty</span>
-          <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
-        </label>
+          <Card.Section withBorder inheritPadding py="xs">
+            <Text weight={300}>Difficulty</Text>
+            <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
+          </Card.Section>
 
-        <label>
-          <button type="submit">Add Item</button>
-        </label>
-      </form>
+          <Card.Section withBorder inheritPadding py="xs">
+            <Button type="submit" variant="light" color="blue" fullWidth mt="md" radius="md">Add Item</Button>
+          </Card.Section>
+
+        </form>
+      </Card>
 
 
 
