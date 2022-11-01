@@ -1,21 +1,27 @@
 import React from "react";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { SettingsContext } from '../../Context/Settings';
-import { useState } from 'react';
 import { Pagination } from '@mantine/core';
 import { Card, Text, Badge, Button, Group, Menu, ActionIcon } from '@mantine/core';
 import { IconDots, IconTrash } from '@tabler/icons';
+import { When } from 'react-if';
 const List = ({ children }) => {
 
-  const { list, toggleComplete, deleteItem } = useContext(SettingsContext);
-  const [activePage, setPage] = useState(1);
+  const { list, toggleComplete, deleteItem, pageItems, showCompleted } = useContext(SettingsContext);
+  const [page, setPage] = useState(1);
+
+  const listToRender = showCompleted ? list : list.filter(item => !item.complete)
+  const listStart = pageItems * (page - 1);
+  const listEnd = listStart + pageItems;
+  const pageCount = Math.ceil(listToRender.length / pageItems);
+  const displayList = listToRender.slice(listStart, listEnd);
   
 
   return (
     <>
       <Card shadow="sm" p="lg" radius="md" withBorder>
       <Card.Section withBorder inheritPadding py="xs">
-        {list.map(item => (
+        {displayList.map(item => (
           <div key={item.id}>
             <Group position="apart" mt="md" mb="xs">
             <Badge color="green" variant="light">Pending</Badge>
@@ -36,15 +42,14 @@ const List = ({ children }) => {
             <Text size="sm" color="dimmed">{item.text}</Text>
             <Text size="sm" color="dimmed">Difficulty: {item.difficulty}</Text>
             <Button onClick={() => toggleComplete(item.id)} variant="light" color="blue" fullWidth mt="md" radius="md">Complete: {item.complete.toString()}</Button>
-            {/* <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div> */}
-            <hr />
+            {/* <hr /> */}
           </div>
         ))}
-
-        <Pagination boundaries={5} page={activePage} onChange={setPage} total={2} />      
-
-      </Card.Section>
+        </Card.Section>
       </Card>
+        <When condition={listToRender.length > 0}>
+          <Pagination page={page} onChange={setPage} total={pageCount} />   
+        </When>      
 
 
     </>
