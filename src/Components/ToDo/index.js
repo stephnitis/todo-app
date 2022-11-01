@@ -19,7 +19,7 @@ const ToDo = () => {
         <Grid.Col lg={2} sm={1} gutter="xl">
           <AddForm />
         </Grid.Col>
-        <Grid.Col lg={2} sm={1} gutter="xl">
+        <Grid.Col lg={4} sm={1} gutter="xl">
           <List />
         </Grid.Col>
       </Grid>
