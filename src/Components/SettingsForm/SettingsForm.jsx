@@ -15,12 +15,6 @@ const SettingsForm = ({ children }) => {
       <Card shadow="sm" p="lg" radius="md" >
         <form onSubmit={handleSubmit}>
 
-          {/* // How many To Do Items to show at once
-
-          // Whether or not to show completed items
-
-          // Provide the users with a form where they can change the values for those settings */}
-
           <Card.Section withBorder inheritPadding py="xs">
             <Text weight={800}>Update Settings</Text>
           </Card.Section>
@@ -39,7 +33,7 @@ const SettingsForm = ({ children }) => {
           <Text weight={500} inheritPadding py="md">Sort Keyword</Text>
           <input onChange={handleChange} name="assignee" type="text" placeholder="difficulty" />
 
-          <Button type="submit" variant="light" color="blue" fullWidth mt="md" radius="md">Add Item</Button>
+          <Button type="submit" variant="light" color="blue" fullWidth mt="md" radius="md">Show New Settings</Button>
 
 
         </form>
