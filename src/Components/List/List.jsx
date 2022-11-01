@@ -14,12 +14,12 @@ const List = ({ children }) => {
   return (
     <>
       <Card shadow="sm" p="lg" radius="md" withBorder>
-      <Card.Section>
+      <Card.Section withBorder inheritPadding py="xs">
         {list.map(item => (
           <div key={item.id}>
             <Group position="apart" mt="md" mb="xs">
             <Badge color="green" variant="light">Pending</Badge>
-            <Text weight={500}>Assigned to: {item.assignee}</Text>
+            <Text weight={300}>Assigned to: {item.assignee}</Text>
             </Group>
             <Text size="sm" color="dimmed">{item.text}</Text>
             <Text size="sm" color="dimmed">Difficulty: {item.difficulty}</Text>
