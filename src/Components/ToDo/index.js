@@ -11,7 +11,7 @@ const ToDo = () => {
 
   return (
     <>
-      <AppHeader />
+
       {/* <Grid justify="center"> */}
       <Grid >
         <Grid.Col xs={12} sm={4} gutter="xl">

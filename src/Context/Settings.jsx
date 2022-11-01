@@ -27,7 +27,7 @@ const SettingsProvider = ({children}) => {
     sort, setSort,
   }
 
-  function addItem(item) {
+  function addItem({...item}) {
     item.id = uuid();
     item.complete = false;
     console.log(item);
