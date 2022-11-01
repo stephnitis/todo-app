@@ -14,7 +14,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   todoHeader: {
-    backgroundColor: theme.colors.blue[7],
+    backgroundColor: theme.colors.gray[8],
     fontFamily: 'Verdana, sans-serif',
     color: theme.white,
     padding: theme.spacing.md,

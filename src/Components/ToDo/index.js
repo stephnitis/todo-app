@@ -12,11 +12,12 @@ const ToDo = () => {
   return (
     <>
       <AppHeader />
-      <Grid justify="center">
-        <Grid.Col lg={2} sm={1} gutter="xl">
+      {/* <Grid justify="center"> */}
+      <Grid >
+        <Grid.Col xs={12} sm={4} gutter="xl">
           <AddForm />
         </Grid.Col>
-        <Grid.Col lg={4} sm={1} gutter="xl">
+        <Grid.Col xs={12} sm={4} gutter="xl">
           <List />
         </Grid.Col>
       </Grid>
