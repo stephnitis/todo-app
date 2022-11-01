@@ -8,7 +8,7 @@ const List = ({children}) => {
 
   return (
     <>
-    
+
 {list.map(item => (
   <div key={item.id}>
     <p>{item.text}</p>
