@@ -11,16 +11,15 @@ const ToDo = () => {
 
   return (
     <>
-
         <header data-testid="todo-header">
           <h1 data-testid="todo-h1" id="todo-header">To Do List: {incomplete} items pending</h1>
         </header>
 
       <Grid justify="center">
-        <Grid.Col span={2}>
+        <Grid.Col span={2} gutter="xl">
           <AddForm />
         </Grid.Col>
-        <Grid.Col span={2}>
+        <Grid.Col span={2} gutter="xl">
           <List />
         </Grid.Col>
       </Grid>

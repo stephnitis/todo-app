@@ -14,6 +14,7 @@ const List = ({ children }) => {
     <>
     
       <section id="list">
+
         {list.map(item => (
           <div key={item.id}>
             <p>{item.text}</p>
@@ -23,6 +24,7 @@ const List = ({ children }) => {
             <hr />
           </div>
         ))}
+        
         <Pagination boundaries={5} page={activePage} onChange={setPage} total={2} />      
         </section>
     </>
