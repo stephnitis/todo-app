@@ -21,7 +21,7 @@ const List = ({ children }) => {
     <>
       <Card shadow="sm" p="lg" radius="md" withBorder>
       <Card.Section withBorder inheritPadding py="xs">
-        {listToRender.map(item => (
+        {displayList.map(item => (
           <div key={item.id}>
             <Group position="apart" mt="md" mb="xs">
             <Badge color="green" variant="light">Pending</Badge>
