@@ -35,17 +35,17 @@ const AddForm = ({ children }) => {
           </Card.Section>
 
           <Card.Section withBorder inheritPadding py="xs">
-            <Text weight={300}>To Do Item</Text>
+            <Text weight={500}>To Do Item</Text>
             <input onChange={handleChange} name="text" type="text" placeholder="Item Details" />
           </Card.Section>
 
           <Card.Section withBorder inheritPadding py="xs">
-            <Text weight={300}>Assigned To</Text>
+            <Text weight={500}>Assigned To</Text>
             <input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
           </Card.Section>
 
           <Card.Section withBorder inheritPadding py="xs">
-            <Text weight={300}>Difficulty</Text>
+            <Text weight={500}>Difficulty</Text>
             <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
           </Card.Section>
 

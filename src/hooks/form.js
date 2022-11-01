@@ -10,9 +10,18 @@ const useFormHook = (callback, defaultValues={}) => {
   };
 
   const handleChange = (event) => {
-    event.persist();
-
-    let { name, value } = event.target;
+    let name, value;
+    if(typeof(event) === 'object'){
+      event.persist();
+      name = event.target.name;
+      value = event.target.value;
+      // let { name, value } = event.target;
+    } else {
+      console.log('event', event)
+      //hard coded for slider, change "diffuclty" language if desired, dynamically for stretch goal
+      name = 'difficulty';
+      value = event;
+    }
     if (parseInt(value)) {
       value = parseInt(value);
     }
