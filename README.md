@@ -34,4 +34,5 @@ Links:
 
 References:
 
+- [Demo Code](https://github.com/codefellows/seattle-code-javascript-401d48)
 - [Mantine Pagination Docs](https://mantine.dev/core/pagination/)

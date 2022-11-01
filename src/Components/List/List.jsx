@@ -42,16 +42,14 @@ const List = ({ children }) => {
             <Text size="sm" color="dimmed">{item.text}</Text>
             <Text size="sm" color="dimmed">Difficulty: {item.difficulty}</Text>
             <Button onClick={() => toggleComplete(item.id)} variant="light" color="blue" fullWidth mt="md" radius="md">Complete: {item.complete.toString()}</Button>
-            <hr />
+            {/* <hr /> */}
           </div>
         ))}
-        <When condition={listToRender > 0}>
-          <Pagination boundaries={5} total={5} />   
-        </When>
-           
-
-      </Card.Section>
+        </Card.Section>
       </Card>
+        <When condition={listToRender.length > 0}>
+          <Pagination page={page} onChange={setPage} total={pageCount} />   
+        </When>      
 
 
     </>
