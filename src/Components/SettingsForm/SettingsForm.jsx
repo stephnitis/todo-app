@@ -3,7 +3,6 @@ import { useContext, } from 'react';
 import { SettingsContext } from '../../Context/Settings';
 import useFormHook from '../../hooks/form.js';
 import { Card, Text, Button, Switch, NumberInput } from '@mantine/core';
-// import { TextInput, Button, Group, Slider, Text } from '@mantine/core';
 
 const SettingsForm = ({ children }) => {
   const {
@@ -16,15 +15,6 @@ const SettingsForm = ({ children }) => {
   } = useContext(SettingsContext);
 
   const { handleChange, handleSubmit } = useFormHook(changeSettings, pageItems, showCompleted);
-
-  // function savePreferences(item) {
-  //   console.log('item', item);
-  //       if(pageItems && showCompleted){
-  //         localStorage.setPageItems(...item, JSON.stringify(pageItems));
-  //         localStorage.setShowCompleted(...item, JSON.stringify(showCompleted));
-  //       }
-      
-  // };
 
   // const previousSettings = useRef();
 

@@ -17,7 +17,6 @@ const SettingsProvider = ({ children }) => {
     difficulty: 4,
   });
 
-  /* Filtering the list to only show the items that are not complete. */
   const listToRender = showCompleted ? list : list.filter(item => !item.complete)
 
   const values = {
@@ -64,7 +63,7 @@ const SettingsProvider = ({ children }) => {
 
   function changeSettings(item){
     setPageItems(pageItems, item)
-    setShowCompleted(showCompleted, item);
+    setShowCompleted(showCompleted, item)
     setPreferences([...preferences, item])
     savePreferences(item);
     console.log('from  settings function ----->', item);
@@ -83,11 +82,11 @@ const SettingsProvider = ({ children }) => {
       
       const storedPreferences = localStorage.getItem({preferences});
       console.log('storedPreferences ---->', storedPreferences);
-      if (storedPreferences) {
-        setShowCompleted();
-        setPageItems();
-      }
-    }, []);
+      // if (storedPreferences) {
+      //   setShowCompleted();
+      //   setPageItems();
+      // }
+    }, [preferences]);
     
     useEffect(() => {
       let incompleteCount = list.filter(item => !item.complete).length;
