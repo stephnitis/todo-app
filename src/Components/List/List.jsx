@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext, useState } from 'react';
-import { SettingsContext } from '../../Context/Settings';
+import { SettingsContext } from '../../Context/Settings/Settings';
 import { Pagination } from '@mantine/core';
 import { Card, Text, Badge, Group, Menu, ActionIcon } from '@mantine/core';
 import { IconDots, IconTrash } from '@tabler/icons';

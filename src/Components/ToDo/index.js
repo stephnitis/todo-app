@@ -4,7 +4,7 @@ import AddForm from '../AddForm/AddForm.jsx';
 import List from '../List/List'
 import { Text, Header, createStyles } from '@mantine/core';
 import { useContext } from 'react';
-import { SettingsContext } from '../../Context/Settings';
+import { SettingsContext } from '../../Context/Settings/Settings';
 // import './todo.scss'
 
 const useStyles = createStyles((theme) => ({

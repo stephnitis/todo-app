@@ -1,6 +1,6 @@
 // import React, { useRef, useEffect } from 'react';
 import { useContext, } from 'react';
-import { SettingsContext } from '../../Context/Settings';
+import { SettingsContext } from '../../Context/Settings/Settings';
 import useFormHook from '../../hooks/form.js';
 import { Card, Text, Button, Switch, NumberInput, Header, createStyles, CardSection, Grid } from '@mantine/core';
 import { IconSettings } from '@tabler/icons';

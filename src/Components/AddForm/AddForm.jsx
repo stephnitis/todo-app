@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { SettingsContext } from '../../Context/Settings';
+import { SettingsContext } from '../../Context/Settings/Settings';
 import useFormHook from '../../hooks/form.js';
 import { Card, Text, Button, Space, TextInput, Slider } from '@mantine/core';
 
