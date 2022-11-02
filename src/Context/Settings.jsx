@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 
 import { v4 as uuid } from 'uuid';
 
+const storedPreferences = JSON.parse(localStorage.getItem('preferences'));
 export const SettingsContext = React.createContext();
 
 const SettingsProvider = ({ children }) => {
-  
-  const [showCompleted, setShowCompleted] = useState(true);
-  const [pageItems, setPageItems] = useState(5);
-  const [preferences, setPreferences] = useState([pageItems, showCompleted]);
 
+  const [submit, setSubmit] = useState(false);
+
+  const [showCompleted, setShowCompleted] = useState(storedPreferences ? storedPreferences.showCompleted : false);
+  const [pageItems, setPageItems] = useState(storedPreferences ? storedPreferences.pageItems : 5);
   // Default sort field (string).
   const [sort, setSort] = useState('difficulty');
+
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
   const [defaultValues] = useState({
@@ -33,8 +35,7 @@ const SettingsProvider = ({ children }) => {
     pageItems, setPageItems,
     sort, setSort,
     listToRender,
-    changeSettings,
-    // savePreferences
+    savePreferences
   }
 
   function addItem(item) {
@@ -62,45 +63,26 @@ const SettingsProvider = ({ children }) => {
     setList(items);
   }
 
-  function changeSettings(item){
-    setPageItems(pageItems, item)
-    setShowCompleted(showCompleted, item)
-    setPreferences([{showCompleted}, {pageItems}]);
-    savePreferences(preferences);
-    console.log('preferences from settings function ----->', preferences);
-    console.log('pageItems from  settings function ----->', pageItems);
-    console.log('showCompleted from  settings function ----->', showCompleted);
-  }
-  
-    function savePreferences(preferences) {
-      console.log('item from saved pref ---->', preferences);
-          if(preferences){
-            localStorage.setItem('preferences', JSON.stringify(preferences));
-          }
-          console.log('storage ----->', localStorage);
-    };
-    
-    useEffect(() => {
-   
-    // returning the pageItems value in storage with a "length" key
-    
-      const storedPreferences = JSON.parse(localStorage.getItem('preferences'));
-      console.log('storedPreferences ---->', storedPreferences);
-      if (storedPreferences) {
-        setShowCompleted(storedPreferences[1]);
-        setPageItems(storedPreferences[0]);
-      }
-    }, []);
-    
-    useEffect(() => {
-      let incompleteCount = list.filter(item => !item.complete).length;
-      setIncomplete(incompleteCount);
-      document.title = `To Do List: ${incomplete}`;
-      // linter will want 'incomplete' added to dependency array unnecessarily. 
-      // disable code used to avoid linter warning 
-      // eslint-disable-next-line react-hooks/exhaustive-deps 
-    }, [list]);
-    
+  function savePreferences() {
+    setSubmit(prev => !prev);
+
+  };
+
+  useEffect(() => {
+    localStorage.setItem('preferences', JSON.stringify({ pageItems, sort, showCompleted }));
+    console.log('storage ----->', localStorage);
+  }, [submit]);
+
+
+  useEffect(() => {
+    let incompleteCount = list.filter(item => !item.complete).length;
+    setIncomplete(incompleteCount);
+    document.title = `To Do List: ${incomplete}`;
+    // linter will want 'incomplete' added to dependency array unnecessarily. 
+    // disable code used to avoid linter warning 
+    // eslint-disable-next-line react-hooks/exhaustive-deps 
+  }, [list]);
+
   return (
 
     <SettingsContext.Provider value={values}>

@@ -2,7 +2,7 @@
 import { useContext, } from 'react';
 import { SettingsContext } from '../../Context/Settings';
 import useFormHook from '../../hooks/form.js';
-import { Card, Text, Button, Switch, NumberInput, Header, createStyles } from '@mantine/core';
+import { Card, Text, Button, Switch, NumberInput, Header, createStyles, CardSection } from '@mantine/core';
 import { IconSettings } from '@tabler/icons';
 
 const useStyles = createStyles((theme) => ({
@@ -23,14 +23,14 @@ const SettingsForm = ({ children }) => {
     setPageItems,
     showCompleted,
     setShowCompleted,
-    changeSettings,
-    setSort
-    // savePreferences
+    setSort,
+    sort,
+    savePreferences
   } = useContext(SettingsContext);
 
-  const {  handleSubmit } = useFormHook(changeSettings, pageItems, showCompleted);
+  const { handleSubmit } = useFormHook(savePreferences, pageItems, showCompleted);
 
-  const { classes } = useStyles();  
+  const { classes } = useStyles();
 
   return (
     <>
@@ -47,44 +47,60 @@ const SettingsForm = ({ children }) => {
           </Card.Section>
 
           <Switch
-            // value={previousSettings}
-            // value={showCompleted}
             label="Show Completed ToDos"
             checked={showCompleted}
             onChange={(event) => setShowCompleted(event.currentTarget.checked)}
           />
 
-            <NumberInput
-              
-              onChange={(val) => setPageItems(val)}
-              placeholder={pageItems}
-              label="Items Per Page"
-            />
+          <NumberInput
+            onChange={(val) => setPageItems(val)}
+            placeholder={pageItems}
+            label="Items Per Page"
+          />
 
-            <Text weight={500} >Sort Keyword</Text>
-            <input onChange={(event) => setSort(event.currentTarget.checked)} name="sort" type="text" placeholder="difficulty" />
+          <Text weight={300} >Sort Keyword</Text>
+          <input
+            onChange={(event) => setSort(event.currentTarget.checked)}
+            name="sort"
+            type="text"
+            placeholder="difficulty" />
 
-            <Button type="submit" variant="light" color="blue" fullWidth mt="md" radius="md">Show New Settings</Button>
+          <CardSection>
+            <Button
+              type="submit"
+              variant="light"
+              color="blue"
+              mt="md"
+              radius="md">
+              Show New Settings
+            </Button>
+
+          </CardSection>
 
 
         </form>
       </Card>
 
       <Card shadow="sm" p="lg" radius="md" withBorder>
-      <Card.Section>
 
-      </Card.Section>
-      <Text weight={300}>
-        Show Completed ToDos
-      </Text>
-      <Text weight={300}>
-        Items Per Page: {pageItems}
-      </Text>
-      <Text weight={300}>
-        Sort Keyword 
-      </Text>
+        <Card.Section withBorder>
+          <Text weight={800}>Updated Settings</Text>
+        </Card.Section>
+        <Card.Section>
 
-    </Card>
+          <Text weight={300}>
+            {showCompleted ? 'Show Completed ToDos' : 'Don\'t Show Completed ToDos'}
+          </Text>
+          <Text weight={300}>
+            Items Per Page: {pageItems}
+          </Text>
+          <Text weight={300}>
+            Sort Keyword: {sort}
+          </Text>
+
+        </Card.Section>
+
+      </Card>
 
 
     </>
@@ -92,8 +108,3 @@ const SettingsForm = ({ children }) => {
 }
 
 export default SettingsForm
-
-
-// Once settings are updated, render the updated settings to the right of the “form”. Consider using Grid, Card, and When components.
-
-// Retrieve their preferences from Local Storage and apply them to the application on startup
