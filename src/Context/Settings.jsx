@@ -66,7 +66,7 @@ const SettingsProvider = ({ children }) => {
     setPageItems(pageItems, item)
     setShowCompleted(showCompleted, item)
     setPreferences([{showCompleted}, {pageItems}]);
-    savePreferences(item);
+    savePreferences(preferences);
     console.log('preferences from settings function ----->', preferences);
     console.log('pageItems from  settings function ----->', pageItems);
     console.log('showCompleted from  settings function ----->', showCompleted);
@@ -85,7 +85,7 @@ const SettingsProvider = ({ children }) => {
       
 
     // returning the pageItems value in storage with a "length" key
-      const storedPreferences = localStorage.getItem({...preferences});
+      const storedPreferences = localStorage.getItem({preferences});
       console.log('storedPreferences ---->', storedPreferences);
       // if (storedPreferences) {
       //   setShowCompleted();
