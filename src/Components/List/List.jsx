@@ -7,10 +7,10 @@ import { IconDots, IconTrash } from '@tabler/icons';
 import { When } from 'react-if';
 const List = ({ children }) => {
 
-  const { list, toggleComplete, deleteItem, pageItems, showCompleted, } = useContext(SettingsContext);
+  const { toggleComplete, deleteItem, pageItems, listToRender } = useContext(SettingsContext);
   const [page, setPage] = useState(1);
 
-  const listToRender = showCompleted ? list : list.filter(item => !item.complete)
+  // const listToRender = showCompleted ? list : list.filter(item => !item.complete)
   const listStart = pageItems * (page - 1);
   const listEnd = listStart + pageItems;
   const pageCount = Math.ceil(listToRender.length / pageItems);
@@ -20,7 +20,7 @@ const List = ({ children }) => {
   return (
     <>
       <Card shadow="sm" p="lg" radius="md" withBorder>
-        <Card.Section withBorder inheritPadding py="xs">
+        <Card.Section withBorder >
           {displayList.map(item => (
             <div key={item.id}>
 

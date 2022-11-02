@@ -41,4 +41,9 @@ Links:
 References:
 
 - [Demo Code](https://github.com/codefellows/seattle-code-javascript-401d48)
-- [Mantine Pagination Docs](https://mantine.dev/core/pagination/)
+- [Mantine Docs](https://mantine.dev/)
+- [Storing User Preferences in React](https://dev.to/lrth06/storing-user-preferences-in-react-2g4i)
+- [How to Use localStorage with React](https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/)
+- [How to persist data to localStorage in React with hooks](https://dev.to/gautham495/how-to-persist-data-to-localstorage-in-react-with-hooks-6ma)
+- [React useRef Hook](https://medium.com/trabe/react-useref-hook-b6c9d39e2022)
+- [React useRef Hook: w3schools](https://www.w3schools.com/react/react_useref.asp)

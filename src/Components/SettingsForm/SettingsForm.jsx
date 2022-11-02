@@ -1,13 +1,38 @@
-import React from 'react';
-import { useContext } from 'react';
+// import React, { useRef, useEffect } from 'react';
+import { useContext, } from 'react';
 import { SettingsContext } from '../../Context/Settings';
 import useFormHook from '../../hooks/form.js';
 import { Card, Text, Button, Switch, NumberInput } from '@mantine/core';
 // import { TextInput, Button, Group, Slider, Text } from '@mantine/core';
 
 const SettingsForm = ({ children }) => {
-  const { pageItems, setPageItems, showCompleted, setShowCompleted } = useContext(SettingsContext);
-  const { handleChange, handleSubmit } = useFormHook(showCompleted);
+  const {
+    pageItems,
+    setPageItems,
+    showCompleted,
+    setShowCompleted,
+    changeSettings,
+    // savePreferences
+  } = useContext(SettingsContext);
+
+  const { handleChange, handleSubmit } = useFormHook(changeSettings, pageItems, showCompleted);
+
+  // function savePreferences(item) {
+  //   console.log('item', item);
+  //       if(pageItems && showCompleted){
+  //         localStorage.setPageItems(...item, JSON.stringify(pageItems));
+  //         localStorage.setShowCompleted(...item, JSON.stringify(showCompleted));
+  //       }
+      
+  // };
+
+  // const previousSettings = useRef();
+
+  // useEffect(() => {
+  //   console.log(previousSettings);
+  //   previousSettings.current = showCompleted;
+  // }, [showCompleted]);
+  
 
   return (
     <>
@@ -15,36 +40,62 @@ const SettingsForm = ({ children }) => {
       <Card shadow="sm" p="lg" radius="md" >
         <form onSubmit={handleSubmit}>
 
-          <Card.Section withBorder inheritPadding py="xs">
+          <Card.Section withBorder>
             <Text weight={800}>Update Settings</Text>
           </Card.Section>
 
           <Switch
+            // value={previousSettings}
+            // value={showCompleted}
             label="Show Completed ToDos"
             checked={showCompleted}
             onChange={(event) => setShowCompleted(event.currentTarget.showCompleted)}
           />
+{/* 
+          function Demo() {
+            const ref = useRef<HTMLInputElement>(null);
+            return <Switch ref={ref} />;
+          } */}
 
-          {/* const [checked, setChecked] = useState(false);
+            {/* <Switch.Group value={value} onChange={setValue}>
+            <Switch value="react" label="React" />
+            <Switch value="svelte" label="Svelte" />
+          </Switch.Group> */}
+
+            {/* const [checked, setChecked] = useState(false);
           return <Switch checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />; */}
 
-          <Text weight={500} inheritPadding py="md">Items Per Page</Text>
-          <NumberInput
-            value={pageItems}
-            onChange={(val) => setPageItems(val)}
-            placeholder="Items Per Page"
-            label="Items Per Page"
-          />
+            <NumberInput
+              
+              onChange={(val) => setPageItems(val)}
+              placeholder="Items Per Page"
+              label="Items Per Page"
+            />
 
-          <Text weight={500} inheritPadding py="md">Sort Keyword</Text>
-          <input onChange={handleChange} name="sort" type="text" placeholder="difficulty" />
+            <Text weight={500} >Sort Keyword</Text>
+            <input onChange={handleChange} name="sort" type="text" placeholder="difficulty" />
 
-          <Button type="submit" variant="light" color="blue" fullWidth mt="md" radius="md">Show New Settings</Button>
+            <Button type="submit" variant="light" color="blue" fullWidth mt="md" radius="md">Show New Settings</Button>
 
 
         </form>
       </Card>
 
+      <Card shadow="sm" p="lg" radius="md" withBorder>
+      <Card.Section>
+
+      </Card.Section>
+      <Text weight={300}>
+        Show Completed ToDos
+      </Text>
+      <Text weight={300}>
+        Items Per Page: {pageItems}
+      </Text>
+      <Text weight={300}>
+        Sort Keyword 
+      </Text>
+
+    </Card>
 
 
     </>
