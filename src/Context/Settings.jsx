@@ -8,7 +8,7 @@ const SettingsProvider = ({ children }) => {
   
   const [showCompleted, setShowCompleted] = useState(true);
   const [pageItems, setPageItems] = useState(5);
-  const [preferences, setPreferences] = useState([pageItems, setPageItems]);
+  const [preferences, setPreferences] = useState([pageItems, showCompleted]);
 
   // Default sort field (string).
   const [sort, setSort] = useState('difficulty');
