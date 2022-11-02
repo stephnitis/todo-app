@@ -7,7 +7,7 @@ import { IconDots, IconTrash } from '@tabler/icons';
 import { When } from 'react-if';
 const List = ({ children }) => {
 
-  const { list, toggleComplete, deleteItem, pageItems, showCompleted, incomplete } = useContext(SettingsContext);
+  const { list, toggleComplete, deleteItem, pageItems, showCompleted, } = useContext(SettingsContext);
   const [page, setPage] = useState(1);
 
   const listToRender = showCompleted ? list : list.filter(item => !item.complete)
@@ -29,8 +29,8 @@ const List = ({ children }) => {
                 <Badge
                   
                   // onClick={() => toggleComplete(item.id)}
-                  color={ item.incomplete ? "blue" : "green" }
-                  variant="light">{ item.incomplete ? "complete" : "pending" }</Badge>
+                  color={ item.complete ? "blue" : "green" }
+                  variant="light">{ item.complete ? "complete" : "pending" }</Badge>
 
                 <Text weight={300}>
                   Assigned to: {item.assignee}

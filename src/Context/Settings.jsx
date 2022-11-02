@@ -4,8 +4,11 @@ import { v4 as uuid } from 'uuid';
 export const SettingsContext = React.createContext();
 
 const SettingsProvider = ({children}) => {
+  //user settings
   const [showCompleted, setShowCompleted] = useState(false);
   const [pageItems, setPageItems] = useState(3);
+
+  
   const [sort, setSort] = useState('difficulty');
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
@@ -60,6 +63,18 @@ const SettingsProvider = ({children}) => {
     // disable code used to avoid linter warning 
     // eslint-disable-next-line react-hooks/exhaustive-deps 
   }, [list]);  
+
+  // Create a context for managing application settings and provide this at the application level.
+
+  // Number of items to display per screen (number).
+
+  // Default sort field (string).
+
+  // Create a function in your context that saves user preferences (for the above) to local storage.
+
+  // Implement a useEffect() (or componentDidMount()) in your context to read from local storage and set the values for those 2 state properties on application load.
+
+  // Note: You will need to stringify your state prior to saving to local storage, and parse it when you retrieve it.
   
 
   return (
@@ -72,20 +87,4 @@ const SettingsProvider = ({children}) => {
 }
 
 export default SettingsProvider;
-
-// Extend your context provider to include all of the following features:
-
-// Create a context for managing application settings and provide this at the application level.
-
-// Display or Hide completed items (boolean).
-
-// Number of items to display per screen (number).
-
-// Default sort field (string).
-
-// Create a function in your context that saves user preferences (for the above) to local storage.
-
-// Implement a useEffect() (or componentDidMount()) in your context to read from local storage and set the values for those 2 state properties on application load.
-
-// Note: You will need to stringify your state prior to saving to local storage, and parse it when you retrieve it.
 
