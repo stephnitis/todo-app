@@ -28,17 +28,9 @@ const SettingsForm = ({ children }) => {
     // savePreferences
   } = useContext(SettingsContext);
 
-  const { handleChange, handleSubmit } = useFormHook(changeSettings, pageItems, showCompleted);
+  const {  handleSubmit } = useFormHook(changeSettings, pageItems, showCompleted);
 
-  const { classes } = useStyles();
-
-  // const previousSettings = useRef();
-
-  // useEffect(() => {
-  //   console.log(previousSettings);
-  //   previousSettings.current = showCompleted;
-  // }, [showCompleted]);
-  
+  const { classes } = useStyles();  
 
   return (
     <>
@@ -61,19 +53,6 @@ const SettingsForm = ({ children }) => {
             checked={showCompleted}
             onChange={(event) => setShowCompleted(event.currentTarget.checked)}
           />
-{/* 
-          function Demo() {
-            const ref = useRef<HTMLInputElement>(null);
-            return <Switch ref={ref} />;
-          } */}
-
-            {/* <Switch.Group value={value} onChange={setValue}>
-            <Switch value="react" label="React" />
-            <Switch value="svelte" label="Svelte" />
-          </Switch.Group> */}
-
-            {/* const [checked, setChecked] = useState(false);
-          return <Switch checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />; */}
 
             <NumberInput
               
@@ -116,7 +95,5 @@ export default SettingsForm
 
 
 // Once settings are updated, render the updated settings to the right of the “form”. Consider using Grid, Card, and When components.
-
-// Save the user preferences in Local Storage
 
 // Retrieve their preferences from Local Storage and apply them to the application on startup

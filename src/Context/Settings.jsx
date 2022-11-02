@@ -81,9 +81,7 @@ const SettingsProvider = ({ children }) => {
     };
     
     useEffect(() => {
-    //   // Implement a useEffect() in your context to read from local storage and set the values for those 2 state properties on application load.
-      
-
+   
     // returning the pageItems value in storage with a "length" key
     
       const storedPreferences = JSON.parse(localStorage.getItem('preferences'));
