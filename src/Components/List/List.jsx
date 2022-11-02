@@ -2,7 +2,7 @@ import React from "react";
 import { useContext, useState } from 'react';
 import { SettingsContext } from '../../Context/Settings';
 import { Pagination } from '@mantine/core';
-import { Card, Text, Badge, Button, Group, Menu, ActionIcon } from '@mantine/core';
+import { Card, Text, Badge, Group, Menu, ActionIcon } from '@mantine/core';
 import { IconDots, IconTrash } from '@tabler/icons';
 import { When } from 'react-if';
 const List = ({ children }) => {

@@ -2,7 +2,20 @@
 import { useContext, } from 'react';
 import { SettingsContext } from '../../Context/Settings';
 import useFormHook from '../../hooks/form.js';
-import { Card, Text, Button, Switch, NumberInput } from '@mantine/core';
+import { Card, Text, Button, Switch, NumberInput, Header, createStyles } from '@mantine/core';
+import { IconSettings } from '@tabler/icons';
+
+const useStyles = createStyles((theme) => ({
+
+  todoHeader: {
+    backgroundColor: theme.colors.gray[8],
+    fontFamily: 'Verdana, sans-serif',
+    color: theme.white,
+    padding: theme.spacing.md,
+    justifyContent: 'center',
+
+  }
+}));
 
 const SettingsForm = ({ children }) => {
   const {
@@ -16,6 +29,8 @@ const SettingsForm = ({ children }) => {
 
   const { handleChange, handleSubmit } = useFormHook(changeSettings, pageItems, showCompleted);
 
+  const { classes } = useStyles();
+
   // const previousSettings = useRef();
 
   // useEffect(() => {
@@ -26,6 +41,10 @@ const SettingsForm = ({ children }) => {
 
   return (
     <>
+      <Header data-testid="settings-header" className={classes.todoHeader}>
+        <Text >
+          <IconSettings size={20} /> Manage Settings</Text>
+      </Header>
 
       <Card shadow="sm" p="lg" radius="md" >
         <form onSubmit={handleSubmit}>

@@ -12,6 +12,11 @@ const useStyles = createStyles((theme) => ({
     color: theme.white,
   },
 
+  navLink: {
+    color: theme.white,
+    fontFamily: 'Verdana, sans-serif',
+  }
+
 }));
 
 const AppHeader = ({ children }) => {
@@ -23,8 +28,8 @@ const AppHeader = ({ children }) => {
     <>
       <Header>
         <Navbar className={classes.navbar}>
-          <Link to="/" className="nav-link">Home</Link>
-          <Link to="/settings" className="nav-link">Settings</Link>
+          <Link to="/" className={classes.navLink}>Home</Link>
+          <Link to="/settings" className={classes.navLink}>Settings</Link>
         </Navbar>
       </Header>
 
