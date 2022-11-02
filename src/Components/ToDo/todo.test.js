@@ -9,10 +9,10 @@ describe('ToDo Component Tests', ()  => {
     render(<ToDo />);
 
     let header = screen.getByTestId('todo-header');
-    let h1 = screen.getByTestId('todo-h1');
+    // let h1 = screen.getByTestId('todo-h1');
 
     expect(header).toBeTruthy();
     expect(header).toBeInTheDocument();
-    expect(h1).toHaveTextContent('To Do List: 0 items pending');
+    expect(header).toHaveTextContent('To Do List: 0 items pending');
   })
 })
