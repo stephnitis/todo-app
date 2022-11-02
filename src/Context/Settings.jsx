@@ -65,6 +65,7 @@ const SettingsProvider = ({ children }) => {
 
   function savePreferences() {
     setSubmit(prev => !prev);
+    
 
   };
 

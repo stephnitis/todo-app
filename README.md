@@ -38,6 +38,17 @@ Links:
 
 ![UML for lab32](./assets/Lab32.png)
 
+1. Implemented the Context API to make some basic application settings available to components
+
+- How many To Do Items to show at once
+- Whether or not to show completed items
+
+2. Provided the users with a form where they can change the values for those settings
+
+- Implemented in the form of a new component, linked to the main navigation through a React Router
+
+3. User preferences are saved to Local Storage, and applied on application start-up
+
 References:
 
 - [Demo Code](https://github.com/codefellows/seattle-code-javascript-401d48)
@@ -45,6 +56,4 @@ References:
 - [Storing User Preferences in React](https://dev.to/lrth06/storing-user-preferences-in-react-2g4i)
 - [How to Use localStorage with React](https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/)
 - [How to persist data to localStorage in React with hooks](https://dev.to/gautham495/how-to-persist-data-to-localstorage-in-react-with-hooks-6ma)
-- [React useRef Hook](https://medium.com/trabe/react-useref-hook-b6c9d39e2022)
-- [React useRef Hook: w3schools](https://www.w3schools.com/react/react_useref.asp)
 - [How to Store a Javascript Array in localStorage](https://catalins.tech/store-array-in-localstorage/)
