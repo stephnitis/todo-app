@@ -2,8 +2,8 @@ import React from 'react';
 import { useContext } from 'react';
 import { SettingsContext } from '../../Context/Settings';
 import useFormHook from '../../hooks/form.js';
-import { Card, Text, Button } from '@mantine/core';
-// import { TextInput, Button, Group, Slider, Text } from '@mantine/core';
+import { Card, Text, Button, Space, TextInput, Slider } from '@mantine/core';
+
 
 const AddForm = ({ children }) => {
   const { defaultValues, addItem } = useContext(SettingsContext);
@@ -16,30 +16,36 @@ const AddForm = ({ children }) => {
         <form onSubmit={handleSubmit}>
 
           <Card.Section withBorder >
-            <Text weight={800}>Add To Do Item</Text>
+            <Text weight={800} px="xs">Add To Do Item</Text>
           </Card.Section>
-
-          <Text weight={500} >To Do Item</Text>
-          <input
+          <Space h="md" />
+          <Text weight={500} px="xs" >To Do Item</Text>
+          <TextInput
             onChange={handleChange}
             name="text"
             type="text"
             placeholder="Item Details" />
 
-          <Text weight={500} >Assigned To</Text>
-          <input
+          <Space h="md" />
+          <Text weight={500} px="xs">Assigned To</Text>
+          <TextInput
             onChange={handleChange}
             name="assignee"
             type="text"
             placeholder="Assignee Name" />
 
-          <Text weight={500} >Difficulty</Text>
-          <input
+          <Space h="md" />
+          <Text weight={500} px="xs">Difficulty</Text>
+          <Slider
             onChange={handleChange}
             defaultValue={defaultValues.difficulty}
+            name="difficulty" 
             type="range"
-            min={1} max={5}
-            name="difficulty" />
+            min={1} 
+            max={5}
+            step={1}
+            mb="lg"
+            />
 
           <Button type="submit" variant="light" color="blue" fullWidth mt="md" radius="md">Add Item</Button>
 

@@ -11,11 +11,13 @@ const useStyles = createStyles((theme) => ({
 
   todoHeader: {
     backgroundColor: theme.colors.gray[8],
-    fontFamily: 'Verdana, sans-serif',
-    color: theme.white,
+    color: theme.colors.gray[0],
+    width: '80%',
+    margin: 'auto',
+    fontSize: theme.fontSizes.lg,
     padding: theme.spacing.md,
-    justifyContent: 'center',
-
+    marginBottom: theme.spacing.md,
+    marginTop: theme.spacing.md,
   }
 }));
 
@@ -32,11 +34,11 @@ const ToDo = () => {
       </Header>
 
       {/* <Grid justify="center"> */}
-      <Grid >
+      <Grid style={{ width: '80%', margin: 'auto' }}>
         <Grid.Col xs={12} sm={4} gutter="xl">
           <AddForm />
         </Grid.Col>
-        <Grid.Col xs={12} sm={4} gutter="xl">
+        <Grid.Col xs={12} sm={8} gutter="xl">
           <List />
         </Grid.Col>
       </Grid>
