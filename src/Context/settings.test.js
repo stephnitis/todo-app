@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 import {screen, render} from '@testing-library/react'
 import SettingsProvider, { SettingsContext } from '../../Context/Settings';
 
+
 describe('Settings Context Unit', () => {
   it('initializes state for consumption as expected', () => {
    render(

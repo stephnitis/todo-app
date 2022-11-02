@@ -47,3 +47,4 @@ References:
 - [How to persist data to localStorage in React with hooks](https://dev.to/gautham495/how-to-persist-data-to-localstorage-in-react-with-hooks-6ma)
 - [React useRef Hook](https://medium.com/trabe/react-useref-hook-b6c9d39e2022)
 - [React useRef Hook: w3schools](https://www.w3schools.com/react/react_useref.asp)
+- [How to Store a Javascript Array in localStorage](https://catalins.tech/store-array-in-localstorage/)

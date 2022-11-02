@@ -7,7 +7,7 @@ const SettingsProvider = ({ children }) => {
   
   const [showCompleted, setShowCompleted] = useState(true);
   const [pageItems, setPageItems] = useState(5);
-  const [preferences, setPreferences] = useState([{pageItems, showCompleted}]);
+  const [preferences, setPreferences] = useState([pageItems, showCompleted]);
 
   // Default sort field (string).
   const [sort, setSort] = useState('difficulty');
@@ -64,15 +64,17 @@ const SettingsProvider = ({ children }) => {
   function changeSettings(item){
     setPageItems(pageItems, item)
     setShowCompleted(showCompleted, item)
-    setPreferences([...preferences, item])
+    setPreferences([{showCompleted}, {pageItems}]);
     savePreferences(item);
-    console.log('from  settings function ----->', item);
+    console.log('preferences from settings function ----->', preferences);
+    console.log('pageItems from  settings function ----->', pageItems);
+    console.log('showCompleted from  settings function ----->', showCompleted);
   }
   
     function savePreferences(preferences) {
       console.log('item from saved pref ---->', preferences);
           if(preferences){
-            localStorage.setItem(preferences, JSON.stringify(preferences));
+            localStorage.setItem('preferences', JSON.stringify(preferences));
           }
           console.log('storage ----->', localStorage);
     };
@@ -80,6 +82,8 @@ const SettingsProvider = ({ children }) => {
     useEffect(() => {
     //   // Implement a useEffect() in your context to read from local storage and set the values for those 2 state properties on application load.
       
+
+    // returning the pageItems value in storage with a "length" key
       const storedPreferences = localStorage.getItem({preferences});
       console.log('storedPreferences ---->', storedPreferences);
       // if (storedPreferences) {
