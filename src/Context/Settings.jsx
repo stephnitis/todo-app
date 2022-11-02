@@ -86,10 +86,10 @@ const SettingsProvider = ({ children }) => {
     
       const storedPreferences = JSON.parse(localStorage.getItem('preferences'));
       console.log('storedPreferences ---->', storedPreferences);
-      // if (storedPreferences) {
-      //   setShowCompleted();
-      //   setPageItems();
-      // }
+      if (storedPreferences) {
+        setShowCompleted(storedPreferences[1]);
+        setPageItems(storedPreferences[0]);
+      }
     }, [preferences]);
     
     useEffect(() => {
