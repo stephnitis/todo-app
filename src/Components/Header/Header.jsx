@@ -8,12 +8,14 @@ const useStyles = createStyles((theme) => ({
   navbar: {
     backgroundColor: theme.colors.blue[7],
     fontFamily: 'Verdana, sans-serif',
+    fontSize: theme.fontSizes.md,
     padding: theme.spacing.md,
     color: theme.white,
   },
 
   navLink: {
-    color: theme.white,
+    textDecoration: 'none',
+    color: theme.colors.gray[0],
     fontFamily: 'Verdana, sans-serif',
   }
 
