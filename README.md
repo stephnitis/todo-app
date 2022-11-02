@@ -49,6 +49,14 @@ Links:
 
 3. User preferences are saved to Local Storage, and applied on application start-up
 
+## Phase Three
+
+### Adding security and access controls to the application.
+
+### branch: context-auth
+
+![auth UML](./assets/Lab33.png)
+
 References:
 
 - [Demo Code](https://github.com/codefellows/seattle-code-javascript-401d48)
