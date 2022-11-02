@@ -28,7 +28,7 @@ const List = ({ children }) => {
 
                 <Badge
                   
-                  // onClick={() => toggleComplete(item.id)}
+                  onClick={() => toggleComplete(item.id)}
                   color={ item.complete ? "blue" : "green" }
                   variant="light">{ item.complete ? "complete" : "pending" }</Badge>
 
@@ -62,15 +62,15 @@ const List = ({ children }) => {
                 Difficulty: {item.difficulty}
               </Text>
 
-              <Button
+              {/* <Button
                 onClick={() => toggleComplete(item.id)}
                 variant="light"
                 color="blue"
                 fullWidth mt="md"
                 radius="md">                 
-                Complete
+                Complete */}
                 {/* {item.complete.toString()} */}
-              </Button>
+              {/* </Button> */}
               {/* <hr /> */}
             </div>
           ))}
