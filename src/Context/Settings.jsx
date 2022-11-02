@@ -36,7 +36,7 @@ const SettingsProvider = ({ children }) => {
     // savePreferences
   }
 
-  function addItem({ ...item }) {
+  function addItem(item) {
     item.id = uuid();
     item.complete = false;
     // console.log(item);
