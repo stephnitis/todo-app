@@ -8,7 +8,7 @@ const SettingsProvider = ({ children }) => {
   
   const [showCompleted, setShowCompleted] = useState(true);
   const [pageItems, setPageItems] = useState(5);
-  const [preferences, setPreferences] = useState([pageItems, showCompleted]);
+  const [preferences, setPreferences] = useState([pageItems, setPageItems]);
 
   // Default sort field (string).
   const [sort, setSort] = useState('difficulty');
@@ -85,7 +85,7 @@ const SettingsProvider = ({ children }) => {
       
 
     // returning the pageItems value in storage with a "length" key
-      const storedPreferences = localStorage.getItem({preferences});
+      const storedPreferences = localStorage.getItem({...preferences});
       console.log('storedPreferences ---->', storedPreferences);
       // if (storedPreferences) {
       //   setShowCompleted();

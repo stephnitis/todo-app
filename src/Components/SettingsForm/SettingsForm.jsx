@@ -24,6 +24,7 @@ const SettingsForm = ({ children }) => {
     showCompleted,
     setShowCompleted,
     changeSettings,
+    setSort
     // savePreferences
   } = useContext(SettingsContext);
 
@@ -58,7 +59,7 @@ const SettingsForm = ({ children }) => {
             // value={showCompleted}
             label="Show Completed ToDos"
             checked={showCompleted}
-            onChange={(event) => setShowCompleted(event.currentTarget.showCompleted)}
+            onChange={(event) => setShowCompleted(event.currentTarget.checked)}
           />
 {/* 
           function Demo() {
@@ -77,12 +78,12 @@ const SettingsForm = ({ children }) => {
             <NumberInput
               
               onChange={(val) => setPageItems(val)}
-              placeholder="Items Per Page"
+              placeholder={pageItems}
               label="Items Per Page"
             />
 
             <Text weight={500} >Sort Keyword</Text>
-            <input onChange={handleChange} name="sort" type="text" placeholder="difficulty" />
+            <input onChange={(event) => setSort(event.currentTarget.checked)} name="sort" type="text" placeholder="difficulty" />
 
             <Button type="submit" variant="light" color="blue" fullWidth mt="md" radius="md">Show New Settings</Button>
 
