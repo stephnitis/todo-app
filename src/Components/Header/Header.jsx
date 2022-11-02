@@ -1,8 +1,7 @@
 import React from 'react';
 // import './header.scss';
-import { createStyles, Navbar, Text, Header  } from '@mantine/core';
-import { useContext } from 'react';
-import { SettingsContext } from '../../Context/Settings';
+import { createStyles, Navbar, Header } from '@mantine/core';
+import { Link } from "react-router-dom";
 
 
 const useStyles = createStyles((theme) => ({
@@ -13,39 +12,35 @@ const useStyles = createStyles((theme) => ({
     color: theme.white,
   },
 
-  todoHeader: {
-    backgroundColor: theme.colors.gray[8],
-    fontFamily: 'Verdana, sans-serif',
+  navLink: {
     color: theme.white,
-    padding: theme.spacing.md,
-    justifyContent: 'center',
-    
+    fontFamily: 'Verdana, sans-serif',
   }
+
 }));
 
 const AppHeader = ({ children }) => {
 
   const { classes } = useStyles();
-  const { incomplete } = useContext(SettingsContext);
 
-    return (
-      <>
-       <Header>        
-      <Navbar className={classes.navbar}>
-          <Text>Home</Text>
-      </Navbar>
-      </Header>
-      <Header data-testid="todo-h1" className={classes.todoHeader}>
-      <Text>To Do List: {incomplete} items pending</Text>
-      </Header>
-      
-      </>
-       //   <header data-testid="todo-header">
-       //   <h1 data-testid="todo-h1" id="todo-header">To Do List: {incomplete} items pending</h1>
-       // </header>
 
-    );
-  }
+  return (
+    <>
+      <Header>
+        <Navbar className={classes.navbar}>
+          <Link to="/" className={classes.navLink}>Home</Link>
+          <Link to="/settings" className={classes.navLink}>Settings</Link>
+        </Navbar>
+      </Header>
+
+
+    </>
+    //   <header data-testid="todo-header">
+    //   <h1 data-testid="todo-h1" id="todo-header">To Do List: {incomplete} items pending</h1>
+    // </header>
+
+  );
+}
 
 
 export default AppHeader;

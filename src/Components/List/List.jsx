@@ -2,15 +2,15 @@ import React from "react";
 import { useContext, useState } from 'react';
 import { SettingsContext } from '../../Context/Settings';
 import { Pagination } from '@mantine/core';
-import { Card, Text, Badge, Button, Group, Menu, ActionIcon } from '@mantine/core';
+import { Card, Text, Badge, Group, Menu, ActionIcon } from '@mantine/core';
 import { IconDots, IconTrash } from '@tabler/icons';
 import { When } from 'react-if';
 const List = ({ children }) => {
 
-  const { list, toggleComplete, deleteItem, pageItems, showCompleted } = useContext(SettingsContext);
+  const { toggleComplete, deleteItem, pageItems, listToRender } = useContext(SettingsContext);
   const [page, setPage] = useState(1);
 
-  const listToRender = showCompleted ? list : list.filter(item => !item.complete)
+  // const listToRender = showCompleted ? list : list.filter(item => !item.complete)
   const listStart = pageItems * (page - 1);
   const listEnd = listStart + pageItems;
   const pageCount = Math.ceil(listToRender.length / pageItems);
@@ -20,16 +20,17 @@ const List = ({ children }) => {
   return (
     <>
       <Card shadow="sm" p="lg" radius="md" withBorder>
-        <Card.Section withBorder inheritPadding py="xs">
+        <Card.Section withBorder >
           {displayList.map(item => (
             <div key={item.id}>
 
               <Group position="apart" mt="md" mb="xs">
 
                 <Badge
-                  // onClick={() => toggleComplete(item.id)}
-                  color="green"
-                  variant="light">Pending</Badge>
+                  
+                  onClick={() => toggleComplete(item.id)}
+                  color={ item.complete ? "blue" : "green" }
+                  variant="light">{ item.complete ? "complete" : "pending" }</Badge>
 
                 <Text weight={300}>
                   Assigned to: {item.assignee}
@@ -61,14 +62,15 @@ const List = ({ children }) => {
                 Difficulty: {item.difficulty}
               </Text>
 
-              <Button
+              {/* <Button
                 onClick={() => toggleComplete(item.id)}
                 variant="light"
                 color="blue"
                 fullWidth mt="md"
-                radius="md">
-                Complete: {item.complete.toString()}
-              </Button>
+                radius="md">                 
+                Complete */}
+                {/* {item.complete.toString()} */}
+              {/* </Button> */}
               {/* <hr /> */}
             </div>
           ))}
