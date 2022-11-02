@@ -85,7 +85,8 @@ const SettingsProvider = ({ children }) => {
       
 
     // returning the pageItems value in storage with a "length" key
-      const storedPreferences = localStorage.getItem({preferences});
+    
+      const storedPreferences = JSON.parse(localStorage.getItem('preferences'));
       console.log('storedPreferences ---->', storedPreferences);
       // if (storedPreferences) {
       //   setShowCompleted();
