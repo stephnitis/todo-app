@@ -90,7 +90,7 @@ const SettingsProvider = ({ children }) => {
         setShowCompleted(storedPreferences[1]);
         setPageItems(storedPreferences[0]);
       }
-    }, [preferences]);
+    }, []);
     
     useEffect(() => {
       let incompleteCount = list.filter(item => !item.complete).length;
