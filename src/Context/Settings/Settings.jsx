@@ -39,6 +39,7 @@ const SettingsProvider = ({ children }) => {
   }
 
   function addItem(item) {
+    // great place to post/create in DB
     item.id = uuid();
     item.complete = false;
     // console.log(item);
@@ -46,7 +47,7 @@ const SettingsProvider = ({ children }) => {
   }
 
   function toggleComplete(id) {
-
+    // great place to put/update the DB
     const items = list.map(item => {
       if (item.id === id) {
         item.complete = !item.complete;
@@ -59,6 +60,7 @@ const SettingsProvider = ({ children }) => {
   }
 
   function deleteItem(id) {
+    // delete from database
     const items = list.filter(item => item.id !== id);
     setList(items);
   }
