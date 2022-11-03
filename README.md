@@ -12,15 +12,15 @@ Links:
 
 ![UML for lab31](./assets/Lab31.png)
 
-#### Technical Requirements
+### Technical Requirements
 
-1. Implementation of React context API for defining settings across the entire application.
+#### Implementation of React context API for defining settings across the entire application.
 
 - Context for managing application display settings provided at the application level.
 - Display and Hide completed items (boolean).
 - Number of items to display per screen (number).
 
-2. Consume and utilize context values throughout your components
+#### Consume and utilize context values throughout your components
 
 - Shows a maximum of a certain number of items per screen in the `<List />` component
   - Uses the Mantine Pagination component to let the users navigate a long list of items
@@ -38,16 +38,16 @@ Links:
 
 ![UML for lab32](./assets/Lab32.png)
 
-1. Implemented the Context API to make some basic application settings available to components
+#### Implemented the Context API to make some basic application settings available to components
 
 - How many To Do Items to show at once
 - Whether or not to show completed items
 
-2. Provided the users with a form where they can change the values for those settings
+#### Provided the users with a form where they can change the values for those settings
 
 - Implemented in the form of a new component, linked to the main navigation through a React Router
 
-3. User preferences are saved to Local Storage, and applied on application start-up
+#### User preferences are saved to Local Storage, and applied on application start-up
 
 ## Phase Three
 
@@ -63,22 +63,37 @@ Role-based access control (RBAC):
 - Allows editors read/write/update permissions
 - Allows admin read/write/delete permissions
 
-1. Implemented an Auth Context with authorizations for access.
+#### Implemented an Auth Context with authorizations for access.
 
-  - Contains login and logout functionality, as well as token validation
-  - Saves cookies upon login, and conditionally renders user logged in upon page render
-  - Sets intial state and defines a Context Provider to pass functionality to other components
+- Contains login and logout functionality, as well as token validation
+- Saves cookies upon login, and conditionally renders user logged in upon page render
+- Sets intial state and defines a Context Provider to pass functionality to other components
 
-2. Implemented a Login Component
+#### Implemented a Login Component
 
-  - Conditionally renders a login form when users are not logged in
-  - Conditionally renders a logout button when users are logged in
-  - Sets state via context within the form
+- Conditionally renders a login form when users are not logged in
+- Conditionally renders a logout button when users are logged in
+- Sets state via context within the form
 
-3. Implemented an Auth Component
+#### Implemented an Auth Component
 
-  - Conditionally passes the RBAC permissions down to other components via context
-  - Used as a wrapper throughout to define where permissions / access is granted.
+- Conditionally passes the RBAC permissions down to other components via context
+- Used as a wrapper throughout to define where permissions / access is granted.
+
+## Phase Four
+
+### Integrating with a live API
+
+### branch: context-api
+
+<!-- ![]() -->
+
+- Functionality from Settings Context updated to use API instead of memory state
+- Fetches the current list of items from the database on application start
+- State dynamically displays database changes through CRUD functionality (Create, Update or Delete)
+- Login Context updated to use server instead of hardcoded data
+  - Stores user token in both state as well as in a cookie for later reference
+
 
 References:
 
@@ -88,3 +103,4 @@ References:
 - [How to Use localStorage with React](https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/)
 - [How to persist data to localStorage in React with hooks](https://dev.to/gautham495/how-to-persist-data-to-localstorage-in-react-with-hooks-6ma)
 - [How to Store a Javascript Array in localStorage](https://catalins.tech/store-array-in-localstorage/)
+- [useAxios : A simple custom hook for calling APIs using axios](https://dev.to/hey_yogini/useaxios-a-simple-custom-hook-for-calling-apis-using-axios-2dkj#final-code)
