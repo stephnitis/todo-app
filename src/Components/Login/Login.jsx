@@ -3,6 +3,7 @@ import {When} from 'react-if';
 
 import { AuthContext } from '../../Context/AuthContext/AuthContext';
 import useFormHook from '../../hooks/form.js';
+import { Text, Button, TextInput } from '@mantine/core';
 
 const Login = () => {
 
@@ -11,7 +12,7 @@ const Login = () => {
   
   const {
     loggedIn,
-    user,
+    // user,
     // error,
     // can,
     login,
@@ -19,7 +20,7 @@ const Login = () => {
   } = useContext(AuthContext);
   
   const { handleSubmit } = useFormHook(login, username, password);
-  
+
   // const handleChange = e => {
   //   this.setState({ [e.target.name]: e.target.value });
   // };
@@ -36,26 +37,30 @@ const Login = () => {
       <>
       {/* // Display a logout button instead of a form if they are “Logged In”. */}
         <When condition={loggedIn}>
-          <button onClick={logout}>Log Out</button>
+          <Button onClick={logout}>Log Out</Button>
         </When>
+
         {/* // Provide an account login screen with a form.
         // Accepts Username and Password */}
         <When condition={!loggedIn}>
           <form onSubmit={handleSubmit}>
-            <input
-              placeholder="UserName"
+            <TextInput
+              placeholder="Username"
               name="username"
               onChange={(e) => setUsername(e.target.value)} 
             />
-            <input
-              placeholder="password"
+            <TextInput
+              placeholder="Password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            {/* <button onClick={() => login(username, password)} type="submit">Login</button> */}
-            <button type="submit">Login</button>
+            <Button onSubmit={() => login(username, password)} type="submit">Login</Button>
+            {/* <Button 
+            type="submit">
+              Login
+            </Button> */}
 
-            <div>user: {JSON.stringify(user)}</div>
+            <div>user: {JSON.stringify(username)}</div>
           </form>
         </When>
       </>

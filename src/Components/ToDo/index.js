@@ -5,6 +5,7 @@ import List from '../List/List'
 import { Text, Header, createStyles } from '@mantine/core';
 import { useContext } from 'react';
 import { SettingsContext } from '../../Context/Settings/Settings';
+import AuthComponent from '../AuthComponent/AuthComponent.jsx';
 // import './todo.scss'
 
 const useStyles = createStyles((theme) => ({
@@ -39,7 +40,9 @@ const ToDo = () => {
           <AddForm />
         </Grid.Col>
         <Grid.Col xs={12} sm={8} gutter="xl">
+        <AuthComponent capability="read">
           <List />
+        </AuthComponent>
         </Grid.Col>
       </Grid>
 

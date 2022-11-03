@@ -4,12 +4,13 @@ import { AuthContext } from '../../Context/AuthContext/AuthContext';
 
 const AuthComponent = ({capability, children}) => {
 
-  const {LoggedIn, can} = useContext(AuthContext);
+  const {loggedIn, can} = useContext(AuthContext);
   // const canDo = this.props.capability ? this.context.can(this.props.capability) : true;
-  // const okToRender = isLoggedIn && canDo;
+  // const okToRender = loggedIn && canDo;
+
   
   return (
-    <When condition={LoggedIn && can(capability)}>
+    <When condition={loggedIn && can(capability)}>
       {children}
     </When>
   );

@@ -67,7 +67,7 @@ const AuthProvider = ({children}) => {
   const _validateToken = token => {
     try {
       let validUser = jwt_decode(token);
-      this.setLoginState(true, token, validUser);
+      setLoggedIn(true, token, validUser);
       if(validUser){
         setUser(validUser);
         setLoggedIn(true);
