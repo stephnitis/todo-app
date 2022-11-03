@@ -10,13 +10,13 @@ import AppHeader from './Components/Header/Header';
 import SettingsForm from './Components/SettingsForm/SettingsForm';
 // import AuthComponent from './Components/AuthComponent/AuthComponent';
 import Login from './Components/Login/Login';
-import LoginContext  from './Context/AuthContext/AuthContext';
+import AuthContext  from './Context/AuthContext/AuthContext';
 
 export default class App extends React.Component {
   render() {
     return (
       <>
-      <LoginContext>
+      <AuthContext>
 
         <Router>
           <AppHeader />
@@ -39,7 +39,7 @@ export default class App extends React.Component {
         </Router>
 
 
-      </LoginContext>
+      </AuthContext>
       </>
     );
   }

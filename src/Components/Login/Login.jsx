@@ -1,57 +1,68 @@
-import React from 'react';
+import {useContext, useState } from 'react';
 import {When} from 'react-if';
 
-import { LoginContext } from '../../Context/AuthContext/AuthContext';
+import { AuthContext } from '../../Context/AuthContext/AuthContext';
+import useFormHook from '../../hooks/form.js';
 
-class Login extends React.Component {
-  static contextType = LoginContext;
+const Login = () => {
 
-  constructor(props) {
-    super(props);
-    this.state = { username: '', password: '' };
-  }
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  
+  const {
+    loggedIn,
+    user,
+    // error,
+    // can,
+    login,
+    logout
+  } = useContext(AuthContext);
+  
+  const { handleSubmit } = useFormHook(login, username, password);
+  
+  // const handleChange = e => {
+  //   this.setState({ [e.target.name]: e.target.value });
+  // };
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   login(username, password);
+  // };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.context.login(this.state.username, this.state.password);
-  };
+// On successful login, store the token as a cookie
+// If a user returns and has a valid login cookie, hide the login form and consider them “Logged In”
 
-  render() {
     return (
       <>
-        <When condition={this.context.loggedIn}>
-          <button onClick={this.context.logout}>Log Out</button>
+      {/* // Display a logout button instead of a form if they are “Logged In”. */}
+        <When condition={loggedIn}>
+          <button onClick={logout}>Log Out</button>
         </When>
-
-        <When condition={!this.context.loggedIn}>
-          <form onSubmit={this.handleSubmit}>
+        {/* // Provide an account login screen with a form.
+        // Accepts Username and Password */}
+        <When condition={!loggedIn}>
+          <form onSubmit={handleSubmit}>
             <input
               placeholder="UserName"
               name="username"
-              onChange={this.handleChange}
+              onChange={(e) => setUsername(e.target.value)} 
             />
             <input
               placeholder="password"
               name="password"
-              onChange={this.handleChange}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <button>Login</button>
+            {/* <button onClick={() => login(username, password)} type="submit">Login</button> */}
+            <button type="submit">Login</button>
+
+            <div>user: {JSON.stringify(user)}</div>
           </form>
         </When>
       </>
-    );
-  }
+    )
+
 }
+  
+
 
 export default Login;
-
-// Implement a <Login /> Component that has the following features:
-// Provide an account login screen with a form.
-// Accepts Username and Password
-// On successful login, store the token as a cookie
-// If a user returns and has a valid login cookie, hide the login form and consider them “Logged In”
-// Display a logout button instead of a form if they are “Logged In”.

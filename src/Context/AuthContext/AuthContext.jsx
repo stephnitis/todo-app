@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import cookie from 'react-cookies';
 import jwt_decode from 'jwt-decode';
+
+export const AuthContext = React.createContext();
 
 const testUsers = {
   Admininistrator: {
@@ -25,85 +27,92 @@ const testUsers = {
   },
 };
 
-export const LoginContext = React.createContext();
+const AuthProvider = ({children}) => {
 
-class LoginProvider extends React.Component {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState({});
+  const [error, setError] = useState(null);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedIn: false,
-      can: this.can,
-      login: this.login,
-      logout: this.logout,
-      user: { capabilities: [] },
-      error: null,
-    };
+  const can = (capability) => {
+    return user?.capabilities?.includes(capability);
   }
 
-  can = (capability) => {
-    return this?.state?.user?.capabilities?.includes(capability);
-  }
+// Define a function that can simulate a login event.
+// Parameters: username and password as strings.
+// Sets a User on the auth context, and changes login status to true.
 
-  login = async (username, password) => {
-    let { loggedIn, token, user } = this.state;
+  const login = async (username, password) => {
+    // let { loggedIn, token, user } = this.state;
     let auth = testUsers[username];
 
     if (auth && auth.password === password) {
       try {
-        this.validateToken(auth.token);
+        _validateToken(auth.token);
       } catch (e) {
-        this.setLoginState(loggedIn, token, user, e);
+        // setLoggedIn(loggedIn, token, user, e);
         console.error(e);
       }
     }
   }
 
-  logout = () => {
-    this.setLoginState(false, null, {});
+// Define a function that can simulate a logout event.
+// Resets the User object and changes login status to `false.
+
+ const logout = () => {
+    setUser({});
+    setLoggedIn(false, null, {});
+    setError(null);
   };
 
-  validateToken = token => {
+  const _validateToken = token => {
     try {
       let validUser = jwt_decode(token);
       this.setLoginState(true, token, validUser);
+      if(validUser){
+        setUser(validUser);
+        setLoggedIn(true);
+        console.log('User Logged In')
+        cookie.save('auth', token);
+      }
     }
     catch (e) {
-      this.setLoginState(false, null, {}, e);
+      setLoggedIn(false, null, {}, e);
       console.log('Token Validation Error', e);
     }
 
   };
 
-  setLoginState = (loggedIn, token, user, error) => {
-    cookie.save('auth', token);
-    this.setState({ token, loggedIn, user, error: error || null });
-  };
-
-  componentDidMount() {
-    const qs = new URLSearchParams(window.location.search);
-    const cookieToken = cookie.load('auth');
-    const token = qs.get('token') || cookieToken || null;
-    this.validateToken(token);
-  }
-
-  render() {
-    return (
-      <LoginContext.Provider value={this.state}>
-        {this.props.children}
-      </LoginContext.Provider>
-    );
-  }
-}
-
-export default LoginProvider;
-
-// Implement a Login/Auth React Context, “protect” the To Do application by restricting access to the various application features based on the users’ login status and capabilities.
-// Define a function that can simulate a login event.
-// Parameters: username and password as strings.
-// Sets a User on the auth context, and changes login status to true.
-// Define a function that can simulate a logout event.
-// Resets the User object and changes login status to `false.
 // Define a function that can authorize a User based on a capabilty.
 // Parameters: a capability as a string.
 // Returns a boolean whether the user has the capabililty parameter.
+
+
+
+useEffect(() => {
+  // const qs = new URLSearchParams(window.location.search);
+  const token = cookie.load('auth');
+  // const token = qs.get('token') || cookieToken || null;
+  if(token){
+    _validateToken(token);
+  }
+}, []); 
+  
+
+  let values = {
+    can,
+    login,
+    logout,
+    error,
+    loggedIn,
+    user
+  };
+
+    return (
+      <AuthContext.Provider value={values}>
+        {children}
+      </AuthContext.Provider>
+    );
+  
+}
+
+export default AuthProvider;
