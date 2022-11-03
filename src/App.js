@@ -8,45 +8,45 @@ import Footer from './Components/Footer/Footer';
 import ToDo from './Components/ToDo';
 import AppHeader from './Components/Header/Header';
 import SettingsForm from './Components/SettingsForm/SettingsForm';
-import AuthComponent from './Components/AuthComponent/AuthComponent';
-import Login from './Components/Login/Login';
+// import AuthComponent from './Components/AuthComponent/AuthComponent';
 import AuthContext from './Context/AuthContext/AuthContext';
+// import { useContext, } from 'react';
+// import { When } from 'react-if';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <>
-        <AuthContext>
+const App = () => {
 
-          <Router>
-            <AppHeader />
-            <Login />
-            <Routes>
-
-              <Route
-                path="/"
-                element={
-                  <AuthComponent>
-                    <ToDo />
-                  </AuthComponent>}>
-              </Route>
-
-              <Route
-                path="/settings"
-                element={
-                  <AuthComponent>
-                    <SettingsForm />
-                  </AuthComponent>
-                }>
-              </Route>
-
-            </Routes>
-            <Footer />
-          </Router>
+  // const { loggedIn } = useContext(AuthContext);
 
 
-        </AuthContext>
-      </>
-    );
-  }
+  return (
+    <>
+      <AuthContext>
+
+        <Router>
+          <AppHeader />
+          {/* <When condition={loggedIn}> */}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ToDo />}>
+            </Route>
+            <Route
+              path="/settings"
+              element={
+                <SettingsForm />
+              }>
+            </Route>
+          </Routes>
+          {/* </When> */}
+          <Footer />
+        </Router>
+
+
+      </AuthContext>
+    </>
+  )
+
 }
+
+export default App;

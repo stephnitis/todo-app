@@ -4,11 +4,14 @@ import { SettingsContext } from '../../Context/Settings/Settings';
 import { Pagination } from '@mantine/core';
 import { Card, Text, Badge, Group, Menu, ActionIcon } from '@mantine/core';
 import { IconDots, IconTrash } from '@tabler/icons';
-import { When } from 'react-if';
+import { When, If, Then, Else } from 'react-if';
+import { AuthContext } from "../../Context/AuthContext/AuthContext";
 const List = ({ children }) => {
 
   const { toggleComplete, deleteItem, pageItems, listToRender } = useContext(SettingsContext);
   const [page, setPage] = useState(1);
+
+  const { can } = useContext(AuthContext);
 
   // const listToRender = showCompleted ? list : list.filter(item => !item.complete)
   const listStart = pageItems * (page - 1);
@@ -24,11 +27,21 @@ const List = ({ children }) => {
         <Card key={item.id} shadow="sm" pb="lg" radius="md" withBorder>
           <Card.Section withBorder >
             <Group position="apart" mt="md" mb="xs">
-              <Badge
-                onClick={() => toggleComplete(item.id)}
-                color={item.complete ? "blue" : "green"}
-                variant="light">{item.complete ? "complete" : "pending"}
-              </Badge>
+              <If condition={can('update')}>
+                <Then>
+                  <Badge
+                    onClick={() => toggleComplete(item.id)}
+                    color={item.complete ? "blue" : "green"}
+                    variant="light">{item.complete ? "complete" : "pending"}
+                  </Badge>
+                </Then>
+                <Else>
+                  <Badge
+                    color={item.complete ? "blue" : "green"}
+                    variant="light">{item.complete ? "complete" : "pending"}
+                  </Badge>
+                </Else>
+              </If>
 
               <Text weight={300}>
                 Assigned to: {item.assignee}
@@ -59,18 +72,6 @@ const List = ({ children }) => {
             <Text size="sm" color="dimmed">
               Difficulty: {item.difficulty}
             </Text>
-
-            {/* <Button
-                onClick={() => toggleComplete(item.id)}
-                variant="light"
-                color="blue"
-                fullWidth mt="md"
-                radius="md">                 
-                Complete */}
-            {/* {item.complete.toString()} */}
-            {/* </Button> */}
-            {/* <hr /> */}
-
 
           </Card.Section>
         </Card>

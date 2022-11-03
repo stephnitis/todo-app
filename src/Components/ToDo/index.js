@@ -30,22 +30,24 @@ const ToDo = () => {
 
   return (
     <>
-      <Header data-testid="todo-header" className={classes.todoHeader}>
-        <Text>To Do List: {incomplete} items pending</Text>
-      </Header>
+      <AuthComponent capability="read">
+        <Header data-testid="todo-header" className={classes.todoHeader}>
+          <Text>To Do List: {incomplete} items pending</Text>
+        </Header>
+      </AuthComponent>
 
-      {/* <Grid justify="center"> */}
       <Grid style={{ width: '80%', margin: 'auto' }}>
         <Grid.Col xs={12} sm={4} gutter="xl">
-          <AddForm />
+          <AuthComponent capability="create">
+            <AddForm />
+          </AuthComponent>
         </Grid.Col>
         <Grid.Col xs={12} sm={8} gutter="xl">
-        <AuthComponent capability="read">
-          <List />
-        </AuthComponent>
+          <AuthComponent capability="read">
+            <List />
+          </AuthComponent>
         </Grid.Col>
       </Grid>
-
     </>
   );
 };
