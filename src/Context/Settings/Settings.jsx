@@ -64,8 +64,7 @@ const SettingsProvider = ({ children }) => {
   }
 
   function savePreferences() {
-    setSubmit(prev => !prev);
-    
+    setSubmit(prev => !prev);    
 
   };
 

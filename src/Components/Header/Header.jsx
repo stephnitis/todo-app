@@ -1,6 +1,7 @@
 import React from 'react';
 // import './header.scss';
-import { createStyles, Navbar, Header } from '@mantine/core';
+import Login from '../../Components/Login/Login';
+import { createStyles, Navbar, Header, Group } from '@mantine/core';
 import { Link } from "react-router-dom";
 
 
@@ -30,8 +31,13 @@ const AppHeader = ({ children }) => {
     <>
       <Header>
         <Navbar className={classes.navbar}>
-          <Link to="/" className={classes.navLink}>Home</Link>
-          <Link to="/settings" className={classes.navLink}>Settings</Link>
+          <Group>
+            <Link to="/" className={classes.navLink}>Home</Link>
+            <Link to="/settings" className={classes.navLink}>Settings</Link>
+          </Group>
+          <Group>
+            <Login />
+          </Group>
         </Navbar>
       </Header>
 

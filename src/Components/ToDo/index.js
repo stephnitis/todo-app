@@ -4,7 +4,8 @@ import AddForm from '../AddForm/AddForm.jsx';
 import List from '../List/List'
 import { Text, Header, createStyles } from '@mantine/core';
 import { useContext } from 'react';
-import { SettingsContext } from '../../Context/Settings';
+import { SettingsContext } from '../../Context/Settings/Settings';
+import AuthComponent from '../AuthComponent/AuthComponent.jsx';
 // import './todo.scss'
 
 const useStyles = createStyles((theme) => ({
@@ -29,20 +30,24 @@ const ToDo = () => {
 
   return (
     <>
-      <Header data-testid="todo-header" className={classes.todoHeader}>
-        <Text>To Do List: {incomplete} items pending</Text>
-      </Header>
+      <AuthComponent capability="read">
+        <Header data-testid="todo-header" className={classes.todoHeader}>
+          <Text>To Do List: {incomplete} items pending</Text>
+        </Header>
+      </AuthComponent>
 
-      {/* <Grid justify="center"> */}
       <Grid style={{ width: '80%', margin: 'auto' }}>
         <Grid.Col xs={12} sm={4} gutter="xl">
-          <AddForm />
+          <AuthComponent capability="create">
+            <AddForm />
+          </AuthComponent>
         </Grid.Col>
         <Grid.Col xs={12} sm={8} gutter="xl">
-          <List />
+          <AuthComponent capability="read">
+            <List />
+          </AuthComponent>
         </Grid.Col>
       </Grid>
-
     </>
   );
 };
