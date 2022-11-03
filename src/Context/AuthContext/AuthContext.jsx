@@ -51,13 +51,17 @@ const AuthProvider = ({children}) => {
 
       let response = await axios(config);
       console.log(response.data);
-    // if (auth && auth.password === password) {
-    //   try {
-    //     _validateToken(auth.token);
-    //   } catch (e) {
-    //     console.error(e);
-    //   }
-    // }
+
+      let {token} = response.data;
+
+    if (token) {
+      try {
+        _validateToken(token);
+      } catch (e) {
+        setError(e);
+        console.error(e);
+      }
+    }
   }
 
  const logout = () => {

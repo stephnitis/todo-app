@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import { v4 as uuid } from 'uuid';
 
@@ -11,7 +12,6 @@ const SettingsProvider = ({ children }) => {
 
   const [showCompleted, setShowCompleted] = useState(storedPreferences ? storedPreferences.showCompleted : false);
   const [pageItems, setPageItems] = useState(storedPreferences ? storedPreferences.pageItems : 5);
-  // Default sort field (string).
   const [sort, setSort] = useState('difficulty');
 
   const [list, setList] = useState([]);
@@ -42,7 +42,6 @@ const SettingsProvider = ({ children }) => {
     // great place to post/create in DB
     item.id = uuid();
     item.complete = false;
-    // console.log(item);
     setList([...list, item]);
   }
 
@@ -66,15 +65,26 @@ const SettingsProvider = ({ children }) => {
   }
 
   function savePreferences() {
-    setSubmit(prev => !prev);    
+    setSubmit(prev => !prev);
 
   };
 
   useEffect(() => {
-    localStorage.setItem('preferences', JSON.stringify({ pageItems, sort, showCompleted }));
-    console.log('storage ----->', localStorage);
-  }, [submit]);
+    (async () => {
+      let response = await axios.get('https://api-js401.herokuapp.com/api/v1/todo');
+      let results = response.data.results;
+      console.log(results);
+      setList(results)
+    })();
+  }, []);
 
+  useEffect(() => {
+    localStorage.setItem('preferences', JSON.stringify({
+      pageItems,
+      sort,
+      showCompleted
+    }));
+  }, [submit]);
 
   useEffect(() => {
     let incompleteCount = list.filter(item => !item.complete).length;
