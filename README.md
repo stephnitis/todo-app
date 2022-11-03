@@ -57,6 +57,29 @@ Links:
 
 ![auth UML](./assets/Lab33.png)
 
+Role-based access control (RBAC):
+
+- Allows users to read only the tasks on the todo list
+- Allows editors read/write/update permissions
+- Allows admin read/write/delete permissions
+
+1. Implemented an Auth Context with authorizations for access.
+
+  - Contains login and logout functionality, as well as token validation
+  - Saves cookies upon login, and conditionally renders user logged in upon page render
+  - Sets intial state and defines a Context Provider to pass functionality to other components
+
+2. Implemented a Login Component
+
+  - Conditionally renders a login form when users are not logged in
+  - Conditionally renders a logout button when users are logged in
+  - Sets state via context within the form
+
+3. Implemented an Auth Component
+
+  - Conditionally passes the RBAC permissions down to other components via context
+  - Used as a wrapper throughout to define where permissions / access is granted.
+
 References:
 
 - [Demo Code](https://github.com/codefellows/seattle-code-javascript-401d48)
