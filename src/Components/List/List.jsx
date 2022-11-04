@@ -30,7 +30,7 @@ const List = ({ children }) => {
               <If condition={can('update')}>
                 <Then>
                   <Badge
-                    onClick={() => toggleComplete(item.id)}
+                    onClick={() => toggleComplete(item._id)}
                     color={item.complete ? "blue" : "green"}
                     variant="light">{item.complete ? "complete" : "pending"}
                   </Badge>

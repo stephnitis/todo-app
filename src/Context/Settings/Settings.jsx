@@ -41,15 +41,32 @@ const SettingsProvider = ({ children }) => {
     }
   }
 
-  function toggleComplete(id) {
-    // great place to put/update the DB
-    const items = list.map(item => {
-      if (item.id === id) {
-        item.complete = !item.complete;
-      }
-      return item;
-    });
-    setList(items);
+  // function toggleComplete(id) {
+  //   // great place to put/update the DB
+  //   const items = list.map(item => {
+  //     if (item.id === id) {
+  //       item.complete = !item.complete;
+  //     }
+  //     return item;
+  //   });
+  //   setList(items);
+  // }
+
+  const toggleComplete = async (id) => {
+    try {
+      let url = `https://api-js401.herokuapp.com/api/v1/todo/${id}`
+      let updatedItem = await axios.put(url, id);
+      const items = list.map(item => {
+        if(updatedItem) {
+          item.complete = !item.complete;
+        }
+        return item;
+      });
+      setList(items)
+    } catch(e) {
+      console.error(e);
+    }
+
   }
 
   // function deleteItem(id) {
@@ -67,7 +84,6 @@ const SettingsProvider = ({ children }) => {
       console.log('Task Removed')
     } catch(e) {
       console.error(e);
-      // console.log('Unable to remove task, get back to work')
     }
   }
 
