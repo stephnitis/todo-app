@@ -23,14 +23,14 @@ const List = ({ children }) => {
   return (
     <>
 
-      {displayList.map(item => (
-        <Card key={item.id} shadow="sm" pb="lg" radius="md" withBorder>
+      {displayList.map((item, index) => (
+        <Card key={`list-${index}`} shadow="sm" pb="lg" radius="md" withBorder>
           <Card.Section withBorder >
             <Group position="apart" mt="md" mb="xs">
               <If condition={can('update')}>
                 <Then>
                   <Badge
-                    onClick={() => toggleComplete(item.id)}
+                    onClick={() => toggleComplete(item._id)}
                     color={item.complete ? "blue" : "green"}
                     variant="light">{item.complete ? "complete" : "pending"}
                   </Badge>
@@ -55,7 +55,7 @@ const List = ({ children }) => {
                 </Menu.Target>
                 <Menu.Dropdown>
                   <Menu.Item
-                    onClick={() => deleteItem(item.id)}
+                    onClick={() => deleteItem(item._id)}
                     icon={<IconTrash size={14} />}
                     color="red">
                     Delete
