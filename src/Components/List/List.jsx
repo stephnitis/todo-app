@@ -23,8 +23,8 @@ const List = ({ children }) => {
   return (
     <>
 
-      {displayList.map(item => (
-        <Card key={item.id} shadow="sm" pb="lg" radius="md" withBorder>
+      {displayList.map((item, index) => (
+        <Card key={`list-${index}`} shadow="sm" pb="lg" radius="md" withBorder>
           <Card.Section withBorder >
             <Group position="apart" mt="md" mb="xs">
               <If condition={can('update')}>

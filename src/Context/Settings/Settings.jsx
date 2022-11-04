@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 
 const storedPreferences = JSON.parse(localStorage.getItem('preferences'));
 export const SettingsContext = React.createContext();
@@ -22,27 +22,23 @@ const SettingsProvider = ({ children }) => {
 
   const listToRender = showCompleted ? list : list.filter(item => !item.complete)
 
-  const values = {
-    list,
-    setList,
-    incomplete,
-    setIncomplete,
-    toggleComplete,
-    addItem,
-    defaultValues,
-    deleteItem,
-    showCompleted, setShowCompleted,
-    pageItems, setPageItems,
-    sort, setSort,
-    listToRender,
-    savePreferences
-  }
 
-  function addItem(item) {
-    // great place to post/create in DB
-    item.id = uuid();
-    item.complete = false;
-    setList([...list, item]);
+  // function addItem(item) {
+  //   // great place to post/create in DB
+  //   item.id = uuid();
+  //   item.complete = false;
+  //   setList([...list, item]);
+  // }
+
+
+  const addItem = async ({...items}) => {
+    try {
+      let url = 'https://api-js401.herokuapp.com/api/v1/todo';
+      let newItem = await axios.post(url, items);
+      setList([...list, newItem.data]);
+    } catch(e){
+      console.error(e)
+    }
   }
 
   function toggleComplete(id) {
@@ -94,6 +90,22 @@ const SettingsProvider = ({ children }) => {
     // disable code used to avoid linter warning 
     // eslint-disable-next-line react-hooks/exhaustive-deps 
   }, [list]);
+
+  const values = {
+    list,
+    setList,
+    incomplete,
+    setIncomplete,
+    toggleComplete,
+    addItem,
+    defaultValues,
+    deleteItem,
+    showCompleted, setShowCompleted,
+    pageItems, setPageItems,
+    sort, setSort,
+    listToRender,
+    savePreferences
+  }
 
   return (
 
