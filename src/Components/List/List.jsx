@@ -55,7 +55,7 @@ const List = ({ children }) => {
                 </Menu.Target>
                 <Menu.Dropdown>
                   <Menu.Item
-                    onClick={() => deleteItem(item.id)}
+                    onClick={() => deleteItem(item._id)}
                     icon={<IconTrash size={14} />}
                     color="red">
                     Delete

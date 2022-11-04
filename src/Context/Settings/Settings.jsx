@@ -49,20 +49,30 @@ const SettingsProvider = ({ children }) => {
       }
       return item;
     });
-
     setList(items);
-
   }
 
-  function deleteItem(id) {
-    // delete from database
-    const items = list.filter(item => item.id !== id);
-    setList(items);
+  // function deleteItem(id) {
+  //   // delete from database
+  //   const items = list.filter(item => item.id !== id);
+  //   setList(items);
+  // }
+
+  const deleteItem = async (id) => {
+    try {
+      let url = `https://api-js401.herokuapp.com/api/v1/todo/${id}`
+      await axios.delete(url);
+      let newList = list.filter(item => item._id !== id);
+      setList(newList);
+      console.log('Task Removed')
+    } catch(e) {
+      console.error(e);
+      // console.log('Unable to remove task, get back to work')
+    }
   }
 
   function savePreferences() {
     setSubmit(prev => !prev);
-
   };
 
   useEffect(() => {
