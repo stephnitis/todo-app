@@ -86,7 +86,7 @@ Role-based access control (RBAC):
 
 ### branch: context-api
 
-<!-- ![]() -->
+![phase four uml](./assets/TODO%20API.png)
 
 - Functionality from Settings Context updated to use API instead of memory state
 - Fetches the current list of items from the database on application start
